@@ -4,6 +4,7 @@ interface InputProps {
   type: string;
   placeholder: string;
   value: string;
+  required?: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   className?: string;
 }
@@ -14,6 +15,7 @@ export const Input: React.FC<InputProps> = ({
   type,
   placeholder,
   value,
+  required = false,
   onChange,
   className = "",
 }) => {
@@ -27,6 +29,7 @@ export const Input: React.FC<InputProps> = ({
         onChange={onChange}
         placeholder={placeholder}
         className={`border-violet-300 border-2 p-2 rounded-2xl focus:outline-none focus:border-violet-400 ${className}`}
+        required={required}
       />
     </div>
   );
