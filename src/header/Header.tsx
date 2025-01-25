@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
         <Hyperlink href="/forum" text="Forums" />
       </div>
       <div className="flex justify-evenly items-center h-full w-1/8">
-        <Hyperlink href="/sign-in" text="Sign in" />
+        <Hyperlink href="/login" text="Login" />
         <Hyperlink href="/register" text="Register" />
       </div>
     </header>

@@ -21,14 +21,14 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div className="flex flex-col">
-      <label htmlFor={label} className="p-2">{label}</label>
+      <label htmlFor={label} className="m-2 font-semibold">{label}</label>
       <input
         type={type}
         name={name}
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className={`border-violet-300 border-2 p-2 rounded-2xl focus:outline-none focus:border-violet-400 ${className}`}
+        className={`border-violet-400 border-3 p-3 rounded-2xl focus:outline-none focus:border-violet-500 ${className}`}
         required={required}
       />
     </div>

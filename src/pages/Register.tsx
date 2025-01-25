@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import supabase from "../utils/supabase";
+import { Hyperlink } from "../components/Hyperlink";
 
 interface RegisterProps {
   email: string;
@@ -12,6 +13,7 @@ interface RegisterProps {
 
 export const Register: React.FC = () => {
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
   const [accountInfo, setAccountInfo] = useState<RegisterProps>({
     email: "",
     username: "",
@@ -66,8 +68,8 @@ export const Register: React.FC = () => {
           data: { username: accountInfo.username },
         }
       });
-
-      console.log(user.data.user?.id);
+      setSuccess(true);
+      console.log(user.data.user?.user_metadata.username);
     } catch (e: any) {
       setError(e.error_description || e.message);
     }
@@ -75,10 +77,11 @@ export const Register: React.FC = () => {
 
   return (
     <div className="flex justify-center items-center h-full w-full">
-      <div className="flex flex-col justify-evenly items-center h-2/3 w-1/2 bg-zinc-800 border-violet-300 border-2">
-        <h1 className="font-bold py-4">Create an RVA Games account:</h1>
+      {success && <h1>Please check your email to verify your account.</h1>}
+    {!success && <div className="flex flex-col justify-around items-center h-3/4 w-1/3 bg-zinc-900 border-violet-500 border-4 rounded-2xl">
+        <h1 className="text-xl font-extrabold py-5 -my-5 border-b-4 border-violet-500 w-full text-center align-middle">Create an RVA Games account</h1>
         <form
-          className="flex flex-col items-center justify-evenly h-5/6"
+          className="flex flex-col items-center justify-evenly h-6/8"
           onSubmit={handleFormSubmit}
         >
           {error && <p className="text-red-500 text-center">{error}</p>}
@@ -120,9 +123,13 @@ export const Register: React.FC = () => {
               onChange={handleFormChange}
             />
           </div>
-          <Button text="Create account" type="submit" />
+          <Button text="Create account" type="submit" className="m-4"/>
         </form>
-      </div>
+          <div className="flex w-2/3 justify-evenly">
+            <h2>Already signed up? </h2>
+            <Hyperlink href="/login" text="Login" />
+        </div>
+      </div>}
     </div>
   );
 };
