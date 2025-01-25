@@ -26,8 +26,13 @@ export const Header: React.FC = () => {
         <Hyperlink href="/games" text="Browse Games" />
         <Hyperlink href="/forum" text="Forums" />
       </div>
-      <div className="flex justify-evenly items-center h-full w-1/8">
-        {user && <Hyperlink href="/user-settings" text={user.user_metadata.username} />}
+      <div className="flex justify-evenly items-center h-full w-1/8 mx-4">
+        {user && (
+          <div className="flex flex-row justify-between w-full">
+            <p className="mx-2">Logged in as</p>
+            <Hyperlink href="/my-profile" text={user.user_metadata.username} />
+          </div>
+        )}
         {!user && (
           <>
             <Hyperlink href="/login" text="Login" />
