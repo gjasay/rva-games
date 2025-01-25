@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Register } from "./pages/Register";
 import { Login } from "./pages/Login";
+import { MyProfile } from "./pages/MyProfile";
+import { UploadGame } from "./pages/UploadGame";
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/my-profile" element={<MyProfile />} />
+          <Route path="/upload-game" element={<UploadGame />} />
         </Routes>
       </BrowserRouter>
     </div>
