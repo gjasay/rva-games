@@ -1,13 +1,19 @@
 interface AvatarProps {
-  avatar_url: string;
+  avatarUrl: string | (() => string) | File;
   className?: string;
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ avatar_url, className = "" }) => {
+const imageUrlMaker = (img: string | (() => string) | File): string => {
+  if (typeof img === "function") return `${img()}?ts=${Date.now()}`;
+  if (typeof img === "object") return URL.createObjectURL(img);
+  return `${img}?ts=${Date.now()}`;
+}
+
+export const Avatar: React.FC<AvatarProps> = ({ avatarUrl, className = "" }) => {
   return (
     <div className="flex items-center gap-4">
       <img
-        src={avatar_url}
+        src={`${imageUrlMaker(avatarUrl)}`}
         alt={`avatar`}
         className={`rounded-full h-12 w-12 ${className}`}
   />

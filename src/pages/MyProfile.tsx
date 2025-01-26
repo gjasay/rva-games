@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import useSupabaseUser from "../hooks/useSupabaseUser";
 import { Card } from "../components/Card";
 import { useState } from "react";
+import { Avatar } from "../components/Avatar";
+import { DropField } from "../components/DropField";
 
 export const MyProfile: React.FC = () => {
   const [updatePicture, setUpdatePicture] = useState(false);
@@ -14,18 +16,21 @@ export const MyProfile: React.FC = () => {
   const navigate = useNavigate();
   const user = useSupabaseUser().value;
 
+  console.log(user);
+
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate("/");
   };
 
-  const handlePhotoSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handlePhotoSubmit = async () => {
     if (!picture || !user) return;
 
     const { data: url, error } = await supabase.storage
       .from("avatars")
-      .upload(`${user.id}/${picture.name}`, picture);
+      .upload(`${user.id}/pfp`, picture, {
+        upsert: true,
+      });
     if (error) {
       console.error(error);
       setError(error.message);
@@ -58,10 +63,9 @@ export const MyProfile: React.FC = () => {
       {user && (
         <Card title="My Profile">
           <div className="flex flex-col items-center justify-center gap-4 p-4">
-            <img
-              src={user.user_metadata.avatar_url}
-              alt="avatar"
-              className="rounded-full h-24 w-24"
+            <Avatar
+              avatarUrl={picture || user.user_metadata.avatar_url}
+              className="w-24 h-24"
             />
             {!updatePicture && (
               <Button onClick={() => setUpdatePicture(!updatePicture)}>
@@ -70,21 +74,26 @@ export const MyProfile: React.FC = () => {
             )}
             {error && <p className="text-red-500">{error}</p>}
             {success && <p className="text-green-500">{success}</p>}
+            <DropField
+              onChange={(file) => setPicture(file)}
+              hidden={!updatePicture}
+            />
             {updatePicture && (
-              <form
-                className="flex flex-col justfify-center items-center"
-                onSubmit={handlePhotoSubmit}
-              >
-                <input
-                  type="file"
-                  onChange={(e) => setPicture(e.target.files?.[0])}
-                />
-                <Button type="submit">Upload</Button>
-              </form>
+              <div className="flex flex-row">
+                <Button
+                  onClick={() => {
+                    setPicture(undefined);
+                    setUpdatePicture(false);
+                  }}
+                >
+                  Cancel
+                </Button>
+                <Button onClick={handlePhotoSubmit}>Confirm</Button>
+              </div>
             )}
             <p className="text-xl">Username: {user.user_metadata.username}</p>
             <p className="text-xl">Email: {user.email}</p>
-            <div className="flex justify-between gap-4">
+            <div className="flex flex-wrap justify-between gap-4">
               <Button onClick={() => navigate("/upload-game")}>
                 Upload Game
               </Button>

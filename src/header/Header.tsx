@@ -3,7 +3,7 @@ import { Hyperlink } from "../components/Hyperlink";
 import useSupabaseUser from "../hooks/useSupabaseUser";
 
 export const Header: React.FC = () => {
-  const user = useSupabaseUser().value;
+  const user = useSupabaseUser();
 
   return (
     <header className="flex justify-between items-center gap-12 h-[5rem] px-8 border-b-zinc-700 border-b-4 whitespace-nowrap">
@@ -14,14 +14,14 @@ export const Header: React.FC = () => {
         <Hyperlink href="/forum" text="Forums" />
       </div>
       <div className="flex justify-evenly items-center">
-        {user && (
+        {user.value && (
           <div className="flex justify-end flex-row flex-wrap w-full gap-4 items-center">
             <p>Logged in as</p>
-            <Hyperlink href="/my-profile" text={user.user_metadata.username} />
-            <Avatar avatar_url={user.user_metadata.avatar_url} />
+            <Hyperlink href="/my-profile" text={() => user.value?.user_metadata.username} />
+            <Avatar avatarUrl={() => user.value?.user_metadata.avatar_url} />
           </div>
         )}
-        {!user && (
+        {!user.value && (
           <div className="flex gap-6">
             <Hyperlink href="/login" text="Login" />
             <Hyperlink href="/register" text="Register" />
