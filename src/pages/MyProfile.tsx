@@ -20,6 +20,11 @@ export const MyProfile: React.FC = () => {
             My Profile
           </h1>
           <div className="flex flex-col items-center justify-center gap-4 p-4">
+            <img
+              src={user.value.user_metadata.avatar_url}
+              alt="avatar"
+              className="rounded-full h-24 w-24"
+              />
             <p className="text-xl">
               Username: {user.value.user_metadata.username}
             </p>

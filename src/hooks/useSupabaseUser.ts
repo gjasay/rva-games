@@ -1,6 +1,5 @@
 import { User } from "@supabase/supabase-js";
 import { signal, useSignalEffect } from "@preact/signals-react";
-// import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import supabase from "../utils/supabase";
 
