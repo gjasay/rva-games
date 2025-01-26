@@ -123,7 +123,7 @@ export const Register: React.FC = () => {
               onChange={handleFormChange}
             />
           </div>
-          <Button text="Create account" type="submit" className="m-4"/>
+          <Button type="submit" className="m-4">Create Account</Button>
         </form>
           <div className="flex w-2/3 justify-evenly">
             <h2>Already signed up? </h2>
