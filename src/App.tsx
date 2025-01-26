@@ -13,6 +13,8 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/games" element={<Home />} />
+          <Route path="/forum" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/my-profile" element={<MyProfile />} />
