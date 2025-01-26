@@ -34,10 +34,10 @@ export const Header: React.FC = () => {
           </div>
         )}
         {!user && (
-          <>
+          <div className="flex gap-6">
             <Hyperlink href="/login" text="Login" />
             <Hyperlink href="/register" text="Register" />
-          </>
+          </div>
         )}
       </div>
     </header>
