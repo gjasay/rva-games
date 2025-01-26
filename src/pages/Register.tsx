@@ -3,6 +3,7 @@ import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import supabase from "../utils/supabase";
 import { Hyperlink } from "../components/Hyperlink";
+import { Card } from "../components/Card";
 
 interface RegisterProps {
   email: string;
@@ -83,12 +84,9 @@ export const Register: React.FC = () => {
     <div className="flex justify-center items-center h-full w-full">
       {success && <h1>Please check your email to verify your account.</h1>}
       {!success && (
-        <div className="flex flex-col justify-around items-center h-3/4 w-1/3 bg-zinc-900 border-violet-500 border-4 rounded-2xl">
-          <h1 className="text-xl font-extrabold py-5 -my-5 border-b-4 border-violet-500 w-full text-center align-middle">
-            Create an RVA Games account
-          </h1>
+          <Card title="Create and RVA Games account">
           <form
-            className="flex flex-col items-center justify-evenly h-6/8"
+            className="flex flex-col items-center justify-evenly"
             onSubmit={handleFormSubmit}
           >
             {error && <p className="text-red-500 text-center">{error}</p>}
@@ -134,11 +132,11 @@ export const Register: React.FC = () => {
               Create Account
             </Button>
           </form>
-          <div className="flex w-2/3 justify-evenly">
+          <div className="flex justify-evenly">
             <h2>Already signed up? </h2>
             <Hyperlink href="/login" text="Login" />
           </div>
-        </div>
+        </Card>
       )}
     </div>
   );
