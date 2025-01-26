@@ -9,7 +9,7 @@ export const DropField: React.FC<DropFieldProps> = ({ onChange, hidden = false }
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (buttonRef.current) {
+    if (buttonRef && buttonRef.current) {
       let counter = 0;
       const onDrop = (e: any) => {
         e.preventDefault();
@@ -42,16 +42,16 @@ export const DropField: React.FC<DropFieldProps> = ({ onChange, hidden = false }
           );
       };
 
-      buttonRef.current!.addEventListener("dragover", onDragOver);
-      buttonRef.current!.addEventListener("dragenter", onDragEnter);
-      buttonRef.current!.addEventListener("dragleave", onDragLeave);
-      buttonRef.current!.addEventListener("drop", onDrop);
+      buttonRef.current.addEventListener("dragover", onDragOver);
+      buttonRef.current.addEventListener("dragenter", onDragEnter);
+      buttonRef.current.addEventListener("dragleave", onDragLeave);
+      buttonRef.current.addEventListener("drop", onDrop);
 
       return () => {
-        buttonRef.current!.removeEventListener("dragover", onDragOver);
-        buttonRef.current!.removeEventListener("dragenter", onDragEnter);
-        buttonRef.current!.removeEventListener("dragleave", onDragLeave);
-        buttonRef.current!.removeEventListener("drop", onDrop);
+        buttonRef.current?.removeEventListener("dragover", onDragOver);
+        buttonRef.current?.removeEventListener("dragenter", onDragEnter);
+        buttonRef.current?.removeEventListener("dragleave", onDragLeave);
+        buttonRef.current?.removeEventListener("drop", onDrop);
       };
     }
     return () => {};
