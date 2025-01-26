@@ -9,8 +9,8 @@ import { UploadGame } from "./pages/UploadGame";
 function App() {
   return (
     <div className="flex flex-col text-zinc-100 bg-zinc-900 h-screen">
-      <Header />
       <BrowserRouter>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
