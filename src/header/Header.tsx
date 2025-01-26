@@ -19,18 +19,16 @@ export const Header: React.FC = () => {
   }, []);
 
   return (
-    <header className="flex justify-between items-center py-4 px-8 border-b-zinc-700 border-b-4">
-      <div className="flex gap-[5rem]">
-        <h1 className="font-extrabold size-xl">RVA Games</h1>
-        <div className="flex justify-evenly items-center gap-8">
-          <Hyperlink href="/" text="Home" />
-          <Hyperlink href="/games" text="Browse Games" />
-          <Hyperlink href="/forum" text="Forums" />
-        </div>
+    <header className="flex justify-between items-center gap-12 h-[5rem] px-8 border-b-zinc-700 border-b-4 whitespace-nowrap">
+      <h1 className="font-extrabold size-xl">RVA Games</h1>
+      <div className="flex-1 flex justify-center items-center gap-6">
+        <Hyperlink href="/" text="Home" />
+        <Hyperlink href="/games" text="Browse Games" />
+        <Hyperlink href="/forum" text="Forums" />
       </div>
       <div className="flex justify-evenly items-center">
         {user && (
-          <div className="flex flex-row justify-between w-full">
+          <div className="flex justify-end flex-row flex-wrap w-full">
             <p className="mx-2">Logged in as</p>
             <Hyperlink href="/my-profile" text={user.user_metadata.username} />
           </div>
