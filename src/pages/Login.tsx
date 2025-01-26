@@ -72,7 +72,7 @@ export const Login: React.FC = () => {
               onChange={handleFormChange}
             />
           </div>
-          <Button text="Login" type="submit" className="my-6 px-6" />
+          <Button type="submit" className="my-6 px-6">Login</Button>
         </form>
         <div className="flex w-2/3 justify-evenly">
           <h2>New here? </h2>
