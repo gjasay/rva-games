@@ -2,9 +2,9 @@ import { useNavigate } from "react-router-dom";
 
 interface HyperlinkProps {
   href: string;
-  text: string | (() => string);
+  children: React.ReactNode
 }
-export const Hyperlink: React.FC<HyperlinkProps> = ({ href, text }) => {
+export const Hyperlink: React.FC<HyperlinkProps> = ({ href, children }) => {
   const navigate = useNavigate();
 
   return (
@@ -16,7 +16,7 @@ export const Hyperlink: React.FC<HyperlinkProps> = ({ href, text }) => {
         navigate(href);
       }}
     >
-      {typeof text === "string" ? text : text()}
+      {children}
     </a>
   );
 };

@@ -84,7 +84,7 @@ export const Register: React.FC = () => {
     <div className="flex justify-center items-center h-full w-full">
       {success && <h1>Please check your email to verify your account.</h1>}
       {!success && (
-          <Card title="Create and RVA Games account">
+          <Card title="Create an RVA Games account">
           <form
             className="flex flex-col items-center justify-evenly"
             onSubmit={handleFormSubmit}
@@ -134,7 +134,7 @@ export const Register: React.FC = () => {
           </form>
           <div className="flex justify-evenly">
             <h2>Already signed up? </h2>
-            <Hyperlink href="/login" text="Login" />
+            <Hyperlink href="/login">Login</Hyperlink>
           </div>
         </Card>
       )}
