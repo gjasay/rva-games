@@ -43,7 +43,10 @@ export const Header: React.FC = () => {
           />
         </div>
 
-        <HamburgerMenu isOpen={menuOpen} onLinkClick={() => setMenuOpen(!menuOpen)}/>
+        <HamburgerMenu
+          isOpen={menuOpen}
+          onLinkClick={() => setMenuOpen(!menuOpen)}
+        />
       </div>
     </header>
   );

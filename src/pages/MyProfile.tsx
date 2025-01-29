@@ -16,8 +16,6 @@ export const MyProfile: React.FC = () => {
   const navigate = useNavigate();
   const user = useSupabaseUser().value;
 
-  console.log(user);
-
   const handleLogout = async () => {
     await supabase.auth.signOut();
     navigate("/");
