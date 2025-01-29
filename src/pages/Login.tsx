@@ -74,7 +74,7 @@ export const Login: React.FC = () => {
         </form>
         <div className="flex justify-evenly">
           <h2>New here? </h2>
-          <Hyperlink href="/register" text="Create account" />
+          <Hyperlink href="/register">Create account</Hyperlink>
         </div>
       </Card>
     </div>
