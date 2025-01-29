@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
       </div>
       <div className="flex justify-evenly items-center">
         {user.value && (
-          <div className="flex justify-end flex-row flex-wrap w-full gap-4 items-center">
+          <div className="hidden md:flex justify-end flex-row flex-wrap w-full gap-4 items-center">
             <Hyperlink href="/my-profile">
               <Avatar avatarUrl={() => user.value?.user_metadata.avatar_url} />
             </Hyperlink>
@@ -43,7 +43,7 @@ export const Header: React.FC = () => {
           />
         </div>
 
-        <HamburgerMenu isOpen={menuOpen} />
+        <HamburgerMenu isOpen={menuOpen} onLinkClick={() => setMenuOpen(!menuOpen)}/>
       </div>
     </header>
   );
