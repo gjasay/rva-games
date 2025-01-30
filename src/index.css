@@ -1,1 +1,13 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: Monaspace;
+  font-weight: 400;
+  src: url("/fonts/MonaspaceKrypton-Medium.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Monaspace-Light;
+  font-weight: 400;
+  src: url("/fonts/MonaspaceKrypton-Light.woff2") format("woff2");
+}

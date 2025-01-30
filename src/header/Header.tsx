@@ -12,7 +12,9 @@ export const Header: React.FC = () => {
 
   return (
     <header className="flex justify-between items-center gap-12 h-[5rem] px-8 border-b-violet-600 border-b-4 whitespace-nowrap">
-      <h1 className="font-extrabold size-xl">RVA Games</h1>
+      <Hyperlink href="/">
+        <h1 className="font-extrabold size-xl">RVA Games</h1>
+      </Hyperlink>
       <div className="flex-1 hidden md:flex justify-center items-center gap-6">
         <Hyperlink href="/">Home</Hyperlink>
         <Hyperlink href="/games">Browse Games</Hyperlink>
