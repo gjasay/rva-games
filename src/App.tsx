@@ -8,7 +8,7 @@ import { UploadGame } from "./pages/UploadGame";
 
 function App() {
   return (
-    <div className="flex flex-col text-zinc-100 bg-zinc-900 h-screen">
+    <div className="flex flex-col bg-zinc-900 h-screen font-['Monaspace-Light'] text-green-400">
       <BrowserRouter>
         <Header />
         <Routes>
